@@ -94,6 +94,22 @@ public class DockerController {
             int exitCode = process.waitFor();
             System.out.println("\nExited with error code : " + exitCode); 
     }
+    
+    public void buildDockerImage(String pName, String pSource) throws IOException, InterruptedException{
+        processBuilder.command("powershell.exe", "/c", "docker build -t "+pName+" "+pSource+" > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\"+pName+".txt");
+        Process process = processBuilder.start();
+
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println("\nExited with error code : " + exitCode); 
+    }
    
     
     
