@@ -17,6 +17,7 @@ public class Main {
         try {
             dockerController.checkDockerVersion();
             dockerController.getAllDockerContainers();
+            dockerController.getAllDockerImages();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
