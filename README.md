@@ -1,4 +1,5 @@
-# JDockerController
+# JDockerController :ocean: :whale: :coffee:
+A simple program that executes commands Shell (i.e. .sh or .bat) in java for run docker commands and outputs the console results.
 
 ## Check docker version
 ```
