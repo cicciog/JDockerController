@@ -79,8 +79,20 @@ public class DockerController {
             System.out.println("\nExited with error code : " + exitCode);
     }
     
-    public void removeAllContainers(){
-        
+    public void removeAllContainers() throws IOException, InterruptedException{
+        processBuilder.command("powershell.exe", "/c", "docker rm $(docker ps -a -q) > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\containersRemoved.txt");
+        Process process = processBuilder.start();
+
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println("\nExited with error code : " + exitCode); 
     }
    
     
