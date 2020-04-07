@@ -2,7 +2,7 @@
 
 ## Check docker version
 ```
-Sample text here...
+> docker version
 ```
 ## Docker containers available on this host
 ```
