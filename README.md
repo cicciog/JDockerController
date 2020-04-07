@@ -7,26 +7,26 @@ A simple program that executes commands Shell (i.e. .sh or .bat) in java for run
 ```
 ## Docker containers available on this host
 ```
-Sample text here...
+> docker ps
 ```
 ## Docker images available on this host
 ```
-Sample text here...
+> docker images
 ```
 ## Remove all docker containers
 ```
-Sample text here...
+> docker rm $(docker ps -a -q)
 ```
 ## Remove all docker images
 ```
-Sample text here...
+> docker rmi $(docker images -q)
 ```
 ## Remove all docker images and docker containers
 ```
-Sample text here...
+> docker rmi $(docker images -q) --force
 ```
 ## Build docker image
 ```
-Sample text here...
+> docker build -t name:v1.0 .Dockerfile
 ```
 
