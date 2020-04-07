@@ -63,6 +63,26 @@ public class DockerController {
             System.out.println("\nExited with error code : " + exitCode);
     }
     
+    public void removeAllImages() throws IOException, InterruptedException{
+        processBuilder.command("powershell.exe", "/c", "docker rmi $(docker images -q) > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\imagesRemoved.txt");
+        Process process = processBuilder.start();
+
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println("\nExited with error code : " + exitCode);
+    }
+    
+    public void removeAllContainers(){
+        
+    }
+   
     
     
 }
