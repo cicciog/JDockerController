@@ -1,4 +1,5 @@
 
+import fileManager.Path;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -125,6 +126,21 @@ public class DockerController {
 
             int exitCode = process.waitFor();
             System.out.println("\nExited with error code : " + exitCode); 
+    }
+    
+    public String normalizeCommand(DockerImage pDockerImage){
+            Path path = new Path();
+            String normalizeSource = pDockerImage.getCommand()
+                                .replace("docker build -t ","")
+                                .replace(pDockerImage.getName()+" ","");
+                    
+            String cmd = "docker build -t "+
+                                    pDockerImage.getName()
+                                    +" "+path.getRepositories()
+                                    +normalizeSource;
+            
+            System.out.println(cmd);
+            return  cmd;
     }
    
     

@@ -4,8 +4,7 @@ import fileManager.Path;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -27,7 +26,7 @@ public class DockerImageTest {
 
         try {
             dockerBuildCMDS = (ArrayList<String[]>) csvmanager.readCSVDockerImageList();
-            for (int i = 0; i < dockerBuildCMDS.size(); i++) {
+            for (int i = 1; i < dockerBuildCMDS.size(); i++) {
                 DockerImage dockerImage = new DockerImage(dockerBuildCMDS.get(i)[0], dockerBuildCMDS.get(i)[1]);
                 dockerImageList.add(dockerImage);
             }
