@@ -14,6 +14,7 @@ public class DockerImage {
     private int[] buildingTime;
     private float averageBuildTime;
     private static final int MAX_NUMBER_OF_BUILD = 10;
+    private boolean buildable = false;
 
     public DockerImage(String pName, String pCommand) {
         this.name = pName;
@@ -21,6 +22,7 @@ public class DockerImage {
         this.numberOfBuild = 0;
         this.buildingTime = new int[10];
         this.averageBuildTime = 0;
+        this.buildable = true;
     }
     
     public void addOneTimeDockerImageBuild(int pBuildingTime){
@@ -52,6 +54,7 @@ public class DockerImage {
         return "DockerImage{" + "name=" + name + 
                                 ", command=" + command + 
                                 ", numberOfBuild=" + numberOfBuild + 
+                                ", buildable=" + buildable +
                                 ", buildingTime=" + Arrays.toString(buildingTime) + 
                                 ", averageBuildTime=" + averageBuildTime + '}';
     }
@@ -75,8 +78,14 @@ public class DockerImage {
     public float getAverageBuildTime() {
         return averageBuildTime;
     }
-    
-    
+
+    public boolean isBuildable() {
+        return buildable;
+    }
+
+    public void setBuildable(boolean pBuildable) {
+        this.buildable = pBuildable;
+    }  
     
     
     
