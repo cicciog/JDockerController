@@ -1,3 +1,7 @@
+
+import fileManager.FileManager;
+import fileManager.Path;
+
 /**
  *
  * @author Franecesco-pc
@@ -34,6 +38,12 @@ public class DockerImageTest {
         
         System.out.println(di.toString());
         System.out.println(di1.toString());
+        
+        
+        Path fm = new Path();
+        System.out.println("Work directory: "+fm.getWorkdirectory());
+        fm.getFileListInADirectory(fm.getWorkdirectory());
+        
     }
     
 }
