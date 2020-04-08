@@ -33,9 +33,9 @@ A simple program that executes commands Shell (i.e. .sh or .bat) in java for run
 ### Import maven dependency OpenCSV
 ```
 <dependency>
-     <groupId>net.sf.opencsv</groupId>
-       <artifactId>opencsv</artifactId>
-     <version>2.3</version>
+    <groupId>com.opencsv</groupId>
+     <artifactId>opencsv</artifactId>
+    <version>4.6</version>
 </dependency>
 ```
 

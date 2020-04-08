@@ -40,7 +40,7 @@ public class DockerImageTest {
         System.out.println(di1.toString());
         
         
-        Path fm = new Path();
+        FileManager fm = new FileManager();
         System.out.println("Work directory: "+fm.getWorkdirectory());
         fm.getFileListInADirectory(fm.getWorkdirectory());
         
