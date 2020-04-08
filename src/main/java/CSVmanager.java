@@ -1,4 +1,5 @@
 
+import com.opencsv.CSVParser;
 import com.opencsv.CSVReader;
 import fileManager.FileManager;
 import fileManager.Path;
@@ -33,9 +34,11 @@ public class CSVmanager {
         String dockerBuildImagesCmdsCSVfile = fileMangager.getWorkdirectory()+
                                                            inputFile.getInput()+
                                                            "\\DokerBuildImagesCmd.csv";
-                
+        
+             
         //Build reader instance
-        CSVReader reader = new CSVReader(new FileReader(dockerBuildImagesCmdsCSVfile), ',', '"', 1);
+        FileReader filereader = new FileReader(dockerBuildImagesCmdsCSVfile);
+        CSVReader reader = new CSVReader(filereader,CSVParser.DEFAULT_SEPARATOR,CSVParser.DEFAULT_QUOTE_CHARACTER,'\0');
        
         //Read all rows at once
         List<String[]> allRows = reader.readAll();
