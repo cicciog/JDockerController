@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Franecesco-pc
+ * @author cicciog
  */
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        DockerController dockerController = new DockerController();
+       
         System.out.println(
                             "                        ##         .\n" +
                             "                  ## ## ##        ==\n" +
@@ -24,20 +24,15 @@ public class Main {
                             "           \\______ o           __/\n" +
                             "             \\    \\         __/\n" +
                             "              \\____\\_______/" );
+        
+        
         try {
-            Path path = new Path();
-            dockerController.checkDockerVersion();
-            //dockerController.buildDockerImage("covid19italy","C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\GitHubRestAPIclient\\Repositories1\\covid19-italy\\.");
-            dockerController.buildDockerImageByCommand("apache_couchdb-docker","docker build -t apache_couchdb "+path.getRepositories()+"\\apache_couchdb-docker\\3.0.0\\.");
-            dockerController.getAllDockerContainers();
-            dockerController.getAllDockerImages();
-            dockerController.removeAllContainers();
-            dockerController.removeAllImages();
+            DockerImage di = new DockerImage("PippoPlante","build -t pippoplante .");
+            CSVmanager csvmanager = new CSVmanager();
+            csvmanager.writeDockerImagesBuildResults(di);
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
     
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Franecesco-pc
+ * @author cicciog
  */
 public class DockerImageTest {
 
@@ -35,13 +35,22 @@ public class DockerImageTest {
         }
 
         try {
+            
             for (int i = 0; i < 10; i++) {
+                
                 DockerController dockerControler = new DockerController();
                 String cmd = dockerControler.normalizeCommand(dockerImageList.get(3));
-                int start = dockerControler.getStartTime()
-                dockerControler.buildDockerImageByCommand(dockerImageList.get(3).getName(),cmd);
-                int end = (int) (System.currentTimeMillis()/1000);
-                dockerImageList.get(3).addOneTimeDockerImageBuild((end-start));
+                
+                int start = dockerControler.getStartTime();
+                int exitValue = dockerControler.buildDockerImageByCommand(dockerImageList.get(3).getName(),cmd);
+                int end = dockerControler.getFianlTime();
+                
+                if(exitValue != 0){
+                     dockerImageList.get(3).setBuildable(false);
+                }else{
+                    dockerImageList.get(3).addOneTimeDockerImageBuild((end-start));
+                }
+                
             }
         } catch (IOException | InterruptedException ex) {
             System.out.println(ex.getMessage());

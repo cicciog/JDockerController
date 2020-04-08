@@ -113,7 +113,7 @@ public class DockerController {
         System.out.println("\nExited with error code : " + exitCode);
     }
 
-    public void buildDockerImageByCommand(String pName, String pCommand) throws IOException, InterruptedException {
+    public int buildDockerImageByCommand(String pName, String pCommand) throws IOException, InterruptedException {
         processBuilder.command("powershell.exe", "/c", pCommand + " > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\" + pName + ".txt");
         Process process = processBuilder.start();
 
@@ -127,6 +127,8 @@ public class DockerController {
 
         int exitCode = process.waitFor();
         System.out.println("\nExited with error code : " + exitCode);
+        
+        return exitCode;
     }
 
     public String normalizeCommand(DockerImage pDockerImage) {
