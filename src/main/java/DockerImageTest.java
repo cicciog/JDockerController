@@ -35,12 +35,10 @@ public class DockerImageTest {
         }
 
         try {
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 10; i++) {
                 DockerController dockerControler = new DockerController();
-                String source = dockerImageList.get(3).getCommand().replace("docker build -t ","").replace(dockerImageList.get(3).getName()+" ","");
-                String cmd = "docker build -t "+dockerImageList.get(3).getName()+" "+path.getRepositories()+source;
-                System.out.println(cmd);
-                int start = (int) (System.currentTimeMillis()/1000);
+                String cmd = dockerControler.normalizeCommand(dockerImageList.get(3));
+                int start = dockerControler.getStartTime()
                 dockerControler.buildDockerImageByCommand(dockerImageList.get(3).getName(),cmd);
                 int end = (int) (System.currentTimeMillis()/1000);
                 dockerImageList.get(3).addOneTimeDockerImageBuild((end-start));
