@@ -30,3 +30,12 @@ A simple program that executes commands Shell (i.e. .sh or .bat) in java for run
 > docker build -t name:v1.0 .Dockerfile
 ```
 
+### Import maven dependency OpenCSV
+```
+<dependency>
+     <groupId>net.sf.opencsv</groupId>
+       <artifactId>opencsv</artifactId>
+     <version>2.3</version>
+</dependency>
+```
+
