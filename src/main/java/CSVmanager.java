@@ -8,7 +8,9 @@ public class CSVmanager {
     public CSVmanager() {
     }
     
-    public void readCommandsByCSV(){}
+    public void readCSVDockerImageList(){
+        
+    }
     
     public void writeDockerImagesBuildResults(){}
     
