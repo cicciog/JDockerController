@@ -25,12 +25,11 @@ public class Main {
                             "              \\____\\_______/" );
         try {
             dockerController.checkDockerVersion();
+            dockerController.buildDockerImage("covid19italy","C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\GitHubRestAPIclient\\Repositories1\\covid19-italy\\.");
             dockerController.getAllDockerContainers();
             dockerController.getAllDockerImages();
             dockerController.removeAllContainers();
             dockerController.removeAllImages();
-            //dockerController.buildDockerImage("covid19italy","C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\GitHubRestAPIclient\\Repositories1\\covid19-italy\\.");
-            
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException ex) {
