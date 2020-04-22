@@ -1,3 +1,4 @@
+"31z4_zookeeper-docker","docker build -t 31z4_zookeeper-docker \31z4_zookeeper-docker\3.6.0\.","1","false","267","267.0"
 "ahawkins_docker-thrift","docker build -t ahawkins_docker-thrift \ahawkins_docker-thrift\0.12\.","1","true","736","736.0"
 "alpinelinux_docker-alpine","docker build -t alpinelinux_docker-alpine \docker-alpine\.","1","true","23","23.0"
 "apache_couchdb-docker","docker build -t apache_couchdb-docker \apache_couchdb-docker\3.0.0\.","1","true","582","582.0"

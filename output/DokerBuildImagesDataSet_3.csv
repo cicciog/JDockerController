@@ -1,3 +1,5 @@
+"31z4_zookeeper-docker","docker build -t 31z4_zookeeper-docker \31z4_zookeeper-docker\3.6.0\.","1","false","289","289.0"
+"ahawkins_docker-thrift","docker build -t ahawkins_docker-thrift \ahawkins_docker-thrift\0.12\.","1","true","788","788.0"
 "alpinelinux_docker-alpine","docker build -t alpinelinux_docker-alpine \docker-alpine\.","1","true","33","33.0"
 "apache_couchdb-docker","docker build -t apache_couchdb-docker \apache_couchdb-docker\3.0.0\.","1","false","220","220.0"
 "appropriate_docker-jetty","docker build -t appropriate_docker-jetty \appropriate_docker-jetty\9.4-jre8\.","1","false","303","303.0"
@@ -38,6 +40,7 @@
 "docker-library_python","docker build -t docker-library_python \docker-library_python\3.8\alpine3.11\.","1","false","133","133.0"
 "docker-library_rabbitmq","docker build -t docker-library_rabbitmq \docker-library_rabbitmq\3.8\ubuntu\.","1","false","427","427.5"
 "docker-library_rails","docker build -t docker-library_rails \docker-library_rails\.","1","false","973","973.0"
+"docker-library_redis","docker build -t docker-library_redis \docker-library_redis\5.0\.","1","false","167","167.0"
 "docker-library_redmine","docker build -t docker-library_redmine \docker-library_redmine\4.1\.","1","false","580","580.0"
 "docker-library_ruby","docker build -t docker-library_ruby \docker-library_ruby\2.7\alpine3.11\.","1","true","739","739.0"
 "docker-library_tomcat","docker build -t docker-library_tomcat \docker-library_tomcat\9.0\jdk8\corretto\.","1","true","603","603.0"
