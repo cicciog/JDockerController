@@ -1,6 +1,6 @@
-
 import fileManager.Path;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -17,7 +17,7 @@ public class DockerController {
     }
 
     public void checkDockerVersion() throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", "docker version > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\version.txt");
+        processBuilder.command("/bin/bash", "-c","sudo docker version");
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -33,7 +33,7 @@ public class DockerController {
     }
 
     public void getAllDockerContainers() throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", "docker ps > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\containers.txt");
+        processBuilder.command("/bin/bash", "-c","sudo docker ps");
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -50,7 +50,7 @@ public class DockerController {
     }
 
     public void getAllDockerImages() throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", "docker images > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\images.txt");
+        processBuilder.command("/bin/bash", "-c","sudo docker images");
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -66,7 +66,7 @@ public class DockerController {
     }
 
     public void removeAllImages() throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", "docker rmi $(docker images -q) > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\imagesRemoved.txt");
+        processBuilder.command("/bin/bash", "-c","docker rmi $(sudo docker images -q)");
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -82,7 +82,7 @@ public class DockerController {
     }
 
     public void removeAllContainers() throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", "docker rm $(docker ps -a -q) > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\containersRemoved.txt");
+        processBuilder.command("/bin/bash", "-c","docker rm $(sudo docker ps -a -q)");
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -98,7 +98,7 @@ public class DockerController {
     }
 
     public void buildDockerImage(String pName, String pSource) throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", "docker build -t " + pName + " " + pSource + " > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\" + pName + ".txt");
+        processBuilder.command("/bin/bash", "-c","docker build -t " + pName + " " + pSource);
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -114,9 +114,9 @@ public class DockerController {
     }
 
     public int buildDockerImageByCommand(String pName, String pCommand) throws IOException, InterruptedException {
-        processBuilder.command("powershell.exe", "/c", pCommand + " > C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\JDockerController\\JDockerController\\output\\" + pName + ".txt");
+        processBuilder.command("/bin/bash", "-c",pCommand);
         Process process = processBuilder.start();
-
+        System.out.println("BUILD: "+pName);
         BufferedReader reader
                 = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
@@ -135,9 +135,10 @@ public class DockerController {
         Path path = new Path();
         String normalizeSource = pDockerImage.getCommand()
                 .replace("docker build -t ", "")
+                .replaceAll("\\\\","/")
                 .replace(pDockerImage.getName() + " ", "");
 
-        String cmd = "docker build -t "
+        String cmd = "sudo docker build -t "
                 + pDockerImage.getName()
                 + " " + path.getRepositories()
                 + normalizeSource;

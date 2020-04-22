@@ -1,6 +1,4 @@
-name ,command
-31z4_storm-docker,\31z4_storm-docker\2.1.0\.
-31z4_zookeeper-docker,docker build -t 31z4_zookeeper-docker \31z4_zookeeper-docker\3.6.0.
+31z4_zookeeper-docker,docker build -t 31z4_zookeeper-docker \31z4_zookeeper-docker\3.6.0\.
 ahawkins_docker-thrift,docker build -t ahawkins_docker-thrift \ahawkins_docker-thrift\0.12\.
 alpinelinux_docker-alpine,docker build -t alpinelinux_docker-alpine \docker-alpine\.
 apache_couchdb-docker,docker build -t apache_couchdb-docker \apache_couchdb-docker\3.0.0\.

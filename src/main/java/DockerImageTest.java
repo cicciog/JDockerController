@@ -1,10 +1,8 @@
-
 import fileManager.FileManager;
 import fileManager.Path;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-
 
 /**
  *
@@ -26,7 +24,7 @@ public class DockerImageTest {
 
         try {
             dockerBuildCMDS = (ArrayList<String[]>) csvmanager.readCSVDockerImageList();
-            for (int i = 1; i < dockerBuildCMDS.size(); i++) {
+            for (int i = 0; i < dockerBuildCMDS.size(); i++) {
                 DockerImage dockerImage = new DockerImage(dockerBuildCMDS.get(i)[0], dockerBuildCMDS.get(i)[1]);
                 dockerImageList.add(dockerImage);
             }
@@ -35,28 +33,31 @@ public class DockerImageTest {
         }
 
         try {
-            
-            for (int i = 0; i < 10; i++) {
-                
-                DockerController dockerControler = new DockerController();
-                String cmd = dockerControler.normalizeCommand(dockerImageList.get(3));
-                
-                int start = dockerControler.getStartTime();
-                int exitValue = dockerControler.buildDockerImageByCommand(dockerImageList.get(3).getName(),cmd);
-                int end = dockerControler.getFianlTime();
-                
-                if(exitValue != 0){
-                     dockerImageList.get(3).setBuildable(false);
-                }else{
-                    dockerImageList.get(3).addOneTimeDockerImageBuild((end-start));
-                }
-                
+            //for (int i = 0; i < dockerImageList.size(); i++) {
+            for (int i = 0; i < 1; i++) {
+                    
+                    DockerController dockerControler = new DockerController();
+                    String cmd = dockerControler.normalizeCommand(dockerImageList.get(i));
+                   
+                    int start = dockerControler.getStartTime();
+                    int exitValue = dockerControler.buildDockerImageByCommand(dockerImageList.get(i).getName(),"sudo "+cmd);
+                    int end = dockerControler.getFianlTime();
+                    
+                    if (exitValue != 0) {
+                        dockerImageList.get(i).setBuildable(false);
+                    } 
+                    
+                    System.out.println("Write: "+dockerImageList.get(i).getName()+" [COMPLETED]");
+                    dockerImageList.get(i).addOneTimeDockerImageBuild((end - start));                    
+                    csvmanager.writeDockerImagesBuildResults(dockerImageList.get(i));
+
             }
+
         } catch (IOException | InterruptedException ex) {
             System.out.println(ex.getMessage());
         }
-        
-        for(int i = 0; i < dockerImageList.size(); i++){
+
+        for (int i = 0; i < dockerImageList.size(); i++) {
             System.out.println(dockerImageList.get(i).toString());
         }
     }

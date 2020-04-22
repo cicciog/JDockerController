@@ -27,10 +27,15 @@ public class Main {
         
         
         try {
+            DockerController dockerController = new DockerController();
+            dockerController.checkDockerVersion();
+            System.out.println(dockerController.getFianlTime());
             DockerImage di = new DockerImage("PippoPlante","build -t pippoplante .");
             CSVmanager csvmanager = new CSVmanager();
             csvmanager.writeDockerImagesBuildResults(di);
         } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }

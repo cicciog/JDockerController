@@ -8,9 +8,9 @@ import java.io.File;
  */
 public class Path {
     //Program Path
-    private String repositories = "C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\GitHubRestAPIclient\\repositories1";
-    private String input = "\\input";
-    private String output = "\\output";
+    private String repositories = "/home/francesco/Documenti/repositories";
+    private String input = "/input";
+    private String output = "/output";
 
     public String getRepositories() {
         return repositories;
