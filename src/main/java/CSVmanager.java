@@ -24,22 +24,24 @@ import static org.apache.commons.lang3.StringUtils.split;
  */
 public class CSVmanager {
 
+    private FileManager fileManager;
+    private Path path;
     private String csvFile = "C:\\Users\\Franecesco-pc\\Documents\\NetBeansProjects\\GitHubRestAPIclient\\src\\main\\java\\input\\DokerOfficialImages.csv";
-    private BufferedReader br = null;
     private String line = "";
     private String cvsSplitBy = ",";
 
     public CSVmanager() {
+        fileManager = new FileManager();
     }
 
-    public Collection<String[]> readCSVDockerImageList() throws FileNotFoundException, URISyntaxException, IOException {
+    public Collection<String[]> readCSVDockerImageList(String pDockerImageListFile) throws FileNotFoundException, URISyntaxException, IOException {
 
         Path inputFile = new Path();
         FileManager fileMangager = new FileManager();
         ArrayList<String[]> rawDockerList = new ArrayList<>();
-        String dockerBuildImagesCmdsCSVfile = fileMangager.getWorkdirectory()
+        String dockerBuildImagesCmdsCSVfile = fileMangager.getWorkDirectory()
                 + inputFile.getInput()
-                + "/DokerBuildImagesCmd.csv";
+                + pDockerImageListFile;
 
         //Build reader instance
         FileReader filereader = new FileReader(dockerBuildImagesCmdsCSVfile);
@@ -93,11 +95,19 @@ public class CSVmanager {
         writer.close();
     }
 
-    public ArrayList<Repository> readRepositoryListFromFile() throws FileNotFoundException, IOException {
-        br = new BufferedReader(new FileReader(csvFile));
-        ArrayList<Repository> repositoryList = new ArrayList<>();
-        while ((line = br.readLine()) != null) {
+    public ArrayList<Repository> readRepositoryListFromFile(String pCSVfileRepositories) throws FileNotFoundException, IOException {
 
+        //create source path of a .csv file for reader a repository list
+        path = new Path();
+        String csvFile = fileManager.getWorkDirectory()
+                + path.getInput() + "/"
+                + pCSVfileRepositories;
+
+        //read repositories from file and create a buffer
+        BufferedReader br = new BufferedReader(new FileReader(csvFile));
+        ArrayList<Repository> repositoryList = new ArrayList<>();
+
+        while ((line = br.readLine()) != null) {
             // use comma as separator
             String[] GitHubRepository = line.split(cvsSplitBy);
 
@@ -108,6 +118,7 @@ public class CSVmanager {
             repositoryList.add(repository);
         }
 
+        //close buffer at the end of file
         if (br != null) {
             try {
                 br.close();
