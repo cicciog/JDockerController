@@ -1,8 +1,13 @@
+import dockerController.DockerImage;
+import dockerController.DockerController;
 import fileManager.FileManager;
 import fileManager.Path;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,14 +28,14 @@ public class DockerImageTest {
         ArrayList<String[]> dockerBuildCMDS;
 
         try {
-            dockerBuildCMDS = (ArrayList<String[]>) csvmanager.readCSVDockerImageList();
+            dockerBuildCMDS = (ArrayList<String[]>) csvmanager.readCSVDockerImageList("/DokerBuildImagesCmd.csv");
             for (int i = 0; i < dockerBuildCMDS.size(); i++) {
                 DockerImage dockerImage = new DockerImage(dockerBuildCMDS.get(i)[0], dockerBuildCMDS.get(i)[1]);
                 dockerImageList.add(dockerImage);
             }
-        } catch (URISyntaxException | IOException ex) {
+        } catch (IOException | URISyntaxException  ex) {
             System.out.println(ex.getMessage());
-        }
+        } 
 
         try {
             //for (int i = 0; i < dockerImageList.size(); i++) {
