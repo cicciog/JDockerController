@@ -72,10 +72,11 @@ public class FileManager {
         }
     }
 
-    public String getWorkdirectory() {
-        return System.getProperty("user.dir");
+     public String getWorkDirectory(){
+         String path = System.getProperty("user.dir");
+         return path; 
     }
-
+     
     public String[] getFileListInADirectory(String pSourceDirectory) {
 
         //Creating a File object for directory
