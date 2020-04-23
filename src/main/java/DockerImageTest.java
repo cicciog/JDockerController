@@ -2,12 +2,9 @@ import dockerController.DockerImage;
 import dockerController.DockerController;
 import fileManager.FileManager;
 import fileManager.Path;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
