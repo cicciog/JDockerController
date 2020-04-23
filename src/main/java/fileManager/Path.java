@@ -8,7 +8,7 @@ import java.io.File;
  */
 public class Path {
     //Program Path
-    private String repositories = "/home/francesco/Documenti/repositories";
+    private String repositories = "/repositories";
     private String input = "/input";
     private String output = "/output";
 
