@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 
 /**
  *
- * @author Franecesco-pc
+ * @author cicciog
  */
 public class FileManager {
 

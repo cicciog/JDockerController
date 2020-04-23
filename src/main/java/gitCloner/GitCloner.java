@@ -10,7 +10,7 @@ import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 /**
  *
- * @author Franecesco-pc
+ * @author cicciog
  */
 public class GitCloner {
 

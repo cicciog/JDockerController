@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  *
- * @author Franecesco-pc
+ * @author cicciog
  */
 public class Path {
     //Program Path

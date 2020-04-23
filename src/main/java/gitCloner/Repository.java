@@ -2,7 +2,7 @@ package gitCloner;
 
 /**
  *
- * @author Franecesco-pc
+ * @author cicciog
  */
 public class Repository {
     private String name;

@@ -1,4 +1,5 @@
 
+import fileManager.CSVmanager;
 import fileManager.FileManager;
 import fileManager.Path;
 import gitCloner.GitCloner;
@@ -9,7 +10,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 
 /**
  *
- * @author francesco
+ * @author cicciog
  */
 public class GithubClonerMain {
 
