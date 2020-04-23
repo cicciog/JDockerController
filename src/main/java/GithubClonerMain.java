@@ -5,6 +5,7 @@ import gitCloner.GitCloner;
 import gitCloner.Repository;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.eclipse.jgit.api.errors.GitAPIException;
 
 /**
  *
@@ -22,22 +23,45 @@ public class GithubClonerMain {
         CSVmanager csvmanager = new CSVmanager();
         ArrayList<Repository> repositories;
 
+        System.out.println(
+                "                        ##         .\n"
+                + "                  ## ## ##        ==\n"
+                + "               ## ## ## ## ##    ===\n"
+                + "           /\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\\___/ ===\n"
+                + "      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~\n"
+                + "           \\______ o           __/\n"
+                + "             \\    \\         __/\n"
+                + "              \\____\\_______/");
+
         try {
             repositories = csvmanager.readRepositoryListFromFile("DokerOfficialImages.csv");
             System.out.println("Read " + repositories.size() + " repositories\n");
-            
-            GitCloner gitCloner = new GitCloner("USERNAME","PASSWORD");
-            
+
+            GitCloner gitCloner = new GitCloner("USERNAME", "PASSWORD");
+
             int res;
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < repositories.size(); i++) {
                 System.out.println(repositories.get(i).toString());
                 res = gitCloner.cloneRepository(repositories.get(i));
-                System.out.println("Result: "+res+"\n");
+                System.out.println("Result: " + res + "\n");
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
 
+        /*
+        CSVmanager csvmanager = new CSVmanager();
+        ArrayList<Repository> repositories;
+
+        try {
+            repositories = csvmanager.readRepositoryListFromFile("DokerOfficialImages.csv");
+            System.out.println("Read " + repositories.size() + " repositories\n");
+            
+            GitCloner gitCloner = new GitCloner("USERNAME","PASSWORD");
+            gitCloner.cloneAllRepository(repositories);
+        }catch (IOException | GitAPIException ex) {
+            System.out.println(ex.getMessage());
+        }*/
     }
 
 }

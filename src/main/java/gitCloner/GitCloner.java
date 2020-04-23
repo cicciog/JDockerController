@@ -30,19 +30,25 @@ public class GitCloner {
 
     public void cloneAllRepository(ArrayList<Repository> pRepositories) throws GitAPIException {
 
-        for (Repository repository : pRepositories) {
-            System.out.println(repository.getName());
+        FileManager fileManager = new FileManager();
+        
+        if (initilizedRepositoriesRoot()) {
+            for (Repository repository : pRepositories) {
+                System.out.println(repository.getName());
+                setLocalPATH(repository.getName());
 
-            File localFile = new File(destination + repository.getName().replace("/", "_"));
+                File localFile = new File(getLocalPATH());
 
-            Git.cloneRepository()
-                    .setURI(repository.getLink())
-                    .setDirectory(localFile)
-                    .setCredentialsProvider(new UsernamePasswordCredentialsProvider(this.username, this.password))
-                    .call();
+                Git.cloneRepository()
+                        .setURI(repository.getLink())
+                        .setDirectory(localFile)
+                        .setCredentialsProvider(new UsernamePasswordCredentialsProvider(this.username, this.password))
+                        .call();
 
-            System.out.println(repository.getLink() + "... [Cloned]");
+                System.out.println(repository.getLink() + "... [Cloned]");
+            }
         }
+
     }
 
     public int cloneRepository(Repository pRepository) {
