@@ -24,15 +24,15 @@ public class GithubClonerMain {
 
         try {
             repositories = csvmanager.readRepositoryListFromFile("DokerOfficialImages.csv");
-            System.out.println("Read " + repositories.size() + " repositories");
+            System.out.println("Read " + repositories.size() + " repositories\n");
             
-            GitCloner gitCloner = new GitCloner("cicciog","Xsw21qaz@@");
+            GitCloner gitCloner = new GitCloner("USERNAME","PASSWORD");
             
             int res;
-            for (int i = 1; i < 3; i++) {
-                System.out.println(repositories.size());
+            for (int i = 0; i < 3; i++) {
+                System.out.println(repositories.get(i).toString());
                 res = gitCloner.cloneRepository(repositories.get(i));
-                System.out.println("Result: "+res);
+                System.out.println("Result: "+res+"\n");
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
