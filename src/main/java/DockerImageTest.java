@@ -52,7 +52,7 @@ public class DockerImageTest {
                     
                     System.out.println("Write: "+dockerImageList.get(i).getName()+" [COMPLETED]");
                     dockerImageList.get(i).addOneTimeDockerImageBuild((end - start));                    
-                    csvmanager.writeDockerImagesBuildResults(dockerImageList.get(i));
+                    csvmanager.writeDockerImagesBuildResult(dockerImageList.get(i));
 
             }
 
