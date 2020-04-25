@@ -5,12 +5,12 @@ package dockerController;
  * @author cicciog
  */
 public class DockerImageBuild {
-    public String Name;
-    public String BuildCommand;
-    public String NumberOfExecution;
-    public String Buildable;
-    public String Build;
-    public String Average;
+    private String Name;
+    private String BuildCommand;
+    private String NumberOfExecution;
+    private String Buildable;
+    private String Build;
+    private String Average;
 
     public String getName() {
         return Name;
