@@ -178,7 +178,10 @@ public class CSVmanager {
     }
 
     public Collection<DockerImage> readTenBuildingCSVandMergeintoOne() {
-
+        
+        fileManager = new FileManager();
+        path = new Path();
+        
         FileReader reader1 = null;
         FileReader reader2 = null;
         FileReader reader3 = null;
@@ -190,19 +193,20 @@ public class CSVmanager {
         FileReader reader9 = null;
         FileReader reader10 = null;
         ArrayList<DockerImage> dockerImageList = null;
+        String relativePathOfOIutputFolder = fileManager.getWorkDirectory()+path.getOutput();
 
         try {
 
-            reader1 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_1.csv");
-            reader2 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_2.csv");
-            reader3 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_3.csv");
-            reader4 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_4.csv");
-            reader5 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_5.csv");
-            reader6 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_6.csv");
-            reader7 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_7.csv");
-            reader8 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_8.csv");
-            reader9 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_9.csv");
-            reader10 = new FileReader("/home/francesco/NetBeansProjects/JDockerController/JDockerController/output/DokerBuildImagesDataSet_10.csv");
+            reader1 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_1.csv");
+            reader2 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_2.csv");
+            reader3 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_3.csv");
+            reader4 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_4.csv");
+            reader5 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_5.csv");
+            reader6 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_6.csv");
+            reader7 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_7.csv");
+            reader8 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_8.csv");
+            reader9 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_9.csv");
+            reader10 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_10.csv");
 
             CSVReader csvReader1 = new CSVReader(reader1);
             ArrayList<String[]> list1 = new ArrayList<>();
