@@ -1,0 +1,1 @@
+{"docker":[{"name":"FROM","lineno":1,"args":"scratch","raw":"FROM scratch"},{"name":"COPY","lineno":2,"args":["hello","/"],"raw":"COPY hello /"},{"name":"CMD","lineno":3,"args":["/hello"],"raw":"CMD [\"/hello\"]"}]}

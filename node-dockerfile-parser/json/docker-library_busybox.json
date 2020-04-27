@@ -1,0 +1,1 @@
+{"docker":[{"name":"FROM","lineno":1,"args":"scratch","raw":"FROM scratch"},{"name":"ADD","lineno":3,"args":["busybox.tar.xz","/"],"raw":"ADD busybox.tar.xz /"},{"name":"CMD","lineno":5,"args":["sh"],"raw":"CMD [\"sh\"]"}]}
