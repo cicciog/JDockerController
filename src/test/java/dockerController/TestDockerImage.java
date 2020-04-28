@@ -13,12 +13,13 @@ import org.junit.Test;
  * @author cicciog
  */
 public class TestDockerImage {
-
+    
+    DockerImage dockerimage = new DockerImage("php", "sudo build -t php .");
+    
     @Test
     public void testAdd() {
 
         //test data
-        DockerImage dockerimage = new DockerImage("php", "sudo build -t php .");
         dockerimage.setBuildable(true);
         dockerimage.addOneTimeDockerImageBuild(100);
         dockerimage.addOneTimeDockerImageBuild(150);
