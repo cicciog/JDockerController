@@ -1,3 +1,5 @@
+package dockerController;
+
 
 import dockerController.DockerImage;
 import static junit.framework.TestCase.assertEquals;
