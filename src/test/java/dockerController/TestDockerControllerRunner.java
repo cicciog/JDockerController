@@ -6,15 +6,15 @@ import org.junit.runner.notification.Failure;
 
 /**
  *
- * @author francesco
+ * @author cicciog
  */
-public class TestDockerImageBuildRunner {
+public class TestDockerControllerRunner {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(TestDockerImageBuild.class);
+       Result result = JUnitCore.runClasses(TestDockerController.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -22,5 +22,5 @@ public class TestDockerImageBuildRunner {
 
         System.out.println(result.wasSuccessful());
     }
-
+    
 }

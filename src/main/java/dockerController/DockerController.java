@@ -2,7 +2,6 @@ package dockerController;
 
 import fileManager.Path;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -155,7 +154,7 @@ public class DockerController {
             return start/1000;
     }
     
-    public int getFianlTime(){
+    public int getFinalTime(){
             int end = (int) System.currentTimeMillis();
             //before convert milliSeconds to seconds
             return end/1000;

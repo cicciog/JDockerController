@@ -44,7 +44,7 @@ public class DockerImageTest {
                    
                     int start = dockerControler.getStartTime();
                     int exitValue = dockerControler.buildDockerImageByCommand(dockerImageList.get(i).getName(),"sudo "+cmd);
-                    int end = dockerControler.getFianlTime();
+                    int end = dockerControler.getFinalTime();
                     
                     if (exitValue != 0) {
                         dockerImageList.get(i).setBuildable(false);

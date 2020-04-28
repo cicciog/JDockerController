@@ -6,7 +6,7 @@ import org.junit.runner.notification.Failure;
 
 /**
  *
- * @author francesco
+ * @author cicciog
  */
 public class TestFileManagerRunner {
 
