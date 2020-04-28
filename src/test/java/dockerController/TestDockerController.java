@@ -19,6 +19,7 @@ public class TestDockerController {
         //check if the object is not null
         assertNotNull(dockerController);
         
+        //check start and final time
         int start = dockerController.getStartTime();
         Thread.sleep(1000);
         int end = dockerController.getFinalTime();
