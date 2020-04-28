@@ -1,12 +1,11 @@
 fileManager/CSVmanager.class
-Main.class
 GithubClonerMain.class
 fileManager/Path.class
 DockerImageTest.class
-DockerImageBuild.class
 gitCloner/GitCloner.class
 dockerController/DockerController.class
 dockerController/DockerImage.class
 fileManager/FileManager.class
-.netbeans_automatic_build
+dockerController/DockerImageBuild.class
+CreateDockerMultipleBuildDataset.class
 gitCloner/Repository.class
