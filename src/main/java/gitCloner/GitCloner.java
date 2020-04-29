@@ -27,6 +27,8 @@ public class GitCloner {
         this.username = pUsername;
         this.password = pPassword;
     }
+    
+     public GitCloner() {}
 
     public void cloneAllRepository(ArrayList<Repository> pRepositories) throws GitAPIException {
 
