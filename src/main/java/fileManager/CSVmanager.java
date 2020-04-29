@@ -5,8 +5,6 @@ import dockerController.DockerImage;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
-import fileManager.FileManager;
-import fileManager.Path;
 import gitCloner.Repository;
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,8 +16,6 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -63,49 +59,13 @@ public class CSVmanager {
         return rawDockerList;
     }
 
-    public void writeDockerImagesBuildResult(DockerImage pDockerImage) throws IOException {
-
-        Path path = new Path();
-        FileManager fileManager = new FileManager();
-
-        String dataCSV = "DokerBuildImagesDataSet.csv";
-        File file = null;
-        CSVWriter writer;
-
-        if (!fileManager.fileExist(fileManager.getWorkDirectory() + path.getOutput() + "//" + dataCSV)) {
-            file = new File(fileManager.getWorkDirectory() + path.getOutput().concat("//" + dataCSV));
-        }
-        System.out.println("PATH" + file.getAbsolutePath());
-
-        // create a List which contains String array 
-        List<String[]> data = new ArrayList<>();
-        writer = new CSVWriter(new FileWriter(fileManager.getWorkDirectory()
-                + path.getOutput().concat("//" + dataCSV), true), ',');
-
-        String[] record = {
-            pDockerImage.getName(),
-            pDockerImage.getCommand(),
-            Integer.toString(pDockerImage.getNumberOfBuild()),
-            String.valueOf(pDockerImage.isBuildable()),
-            Integer.toString(pDockerImage.getBuildingTime()[0]),
-            String.valueOf(pDockerImage.getAverageBuildTime())
-        };
-
-        data.add(record);
-
-        writer.writeNext(record);
-
-        // closing writer connection 
-        writer.close();
-    }
-
     //This method is more expensive if you execute them in pipeline
-    public void writeDockerImagesBuildResultsWithMultipleExecution(DockerImage pDockerImage) throws IOException {
+    public void writeDockerImagesBuildResultsWithMultipleExecution(DockerImage pDockerImage, String pDockerBuildDataset) throws IOException {
 
         Path path = new Path();
         FileManager fileManager = new FileManager();
 
-        String dataCSV = "DokerBuildImagesDataSet.csv";
+        String dataCSV = pDockerBuildDataset;
         File file = null;
         CSVWriter writer;
 
@@ -367,7 +327,6 @@ public class CSVmanager {
                 dockerImage.addOneTimeDockerImageBuild(Integer.parseInt(dockerImageBuild10.getBuild()));
 
                 dockerImageList.add(dockerImage);
-                System.out.println(dockerImage.toString());
             }
 
         } catch (IOException ex) {
@@ -377,12 +336,12 @@ public class CSVmanager {
         return dockerImageList;
     }
 
-    public void writeDockerImagesMultipleBuildResult(Collection<DockerImage> pDockerImageList) throws IOException {
+    public void writeDockerImagesMultipleBuildResult(Collection<DockerImage> pDockerImageList,String pNameDataCSV) throws IOException {
 
         Path path = new Path();
         FileManager fileManager = new FileManager();
 
-        String dataCSV = "DockerBuildImages.csv";
+        String dataCSV = pNameDataCSV;
         File file = null;
         CSVWriter writer;
 
