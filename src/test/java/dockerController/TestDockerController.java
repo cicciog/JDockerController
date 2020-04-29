@@ -1,6 +1,9 @@
 package dockerController;
 
+import fileManager.FileManager;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
@@ -14,9 +17,11 @@ import org.junit.Test;
 public class TestDockerController {
 
     DockerController dockerController = new DockerController();
+    FileManager fileManager = new FileManager();
+    String cmd;
 
     @Test
-    public void testAdd() throws InterruptedException, IOException {
+    public void testAdd() throws InterruptedException, IOException, FileNotFoundException, URISyntaxException {
 
         //check if the object is not null
         assertNotNull(dockerController);
@@ -42,10 +47,18 @@ public class TestDockerController {
         //check if there are built images
         assertTrue(dockerController.getAllDockerImages().size() == 0);
         assertTrue(dockerController.getAllDockerImages().isEmpty());
-        
+
         //check if there are built containers
         assertTrue(dockerController.getAllDockerContainers().size() == 0);
         assertTrue(dockerController.getAllDockerContainers().isEmpty());
+        
+        cmd = fileManager.getWorkDirectory()+"/input/example/"+".";
+        dockerController.buildDockerImage("example",cmd);
+        //check if there are built images
+        assertFalse(dockerController.getAllDockerImages().size() == 0);
+        assertFalse(dockerController.getAllDockerImages().isEmpty());
+        
+
     }
 
 }

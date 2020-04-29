@@ -168,7 +168,7 @@ public class DockerController {
     }
 
     public void buildDockerImage(String pName, String pSource) throws IOException, InterruptedException {
-        processBuilder.command("/bin/bash", "-c", "docker build -t " + pName + " " + pSource);
+        processBuilder.command("/bin/bash", "-c", "sudo docker build -t " + pName + " " + pSource);
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -179,8 +179,7 @@ public class DockerController {
             System.out.println(line);
         }
 
-        int exitCode = process.waitFor();
-        System.out.println("\nExited with error code : " + exitCode);
+        process.destroy();
     }
 
     public int buildDockerImageByCommand(String pName, String pCommand) throws IOException, InterruptedException {
