@@ -21,6 +21,7 @@ public class TestCSVmanager {
     FileManager filemanager = new FileManager();
     Path path = new Path();
     ArrayList<String[]> images;
+    ArrayList<String[]> images1;
     ArrayList<Repository> repositories;
     ArrayList<DockerImage> dockerImages;
 
@@ -31,7 +32,7 @@ public class TestCSVmanager {
         assertNotNull(csvmanager);
 
         //check content read from csv file
-        images = (ArrayList<String[]>) csvmanager.readCSVDockerImageList("/DokerBuildImagesCmd.csv");
+        images = (ArrayList<String[]>) csvmanager.readCSVDockerImageList("/DokerBuildImagesCmd.csv",path.getInput());
         assertNotNull(images);
         assertTrue(images.size() > 0);
         assertTrue(images.get(0).length == 2);
@@ -71,6 +72,17 @@ public class TestCSVmanager {
         csvmanager.writeDockerImagesMultipleBuildResult(dockerImages,"DockerBuildImages_1.csv");
         assertTrue(filemanager.fileExist(filemanager.getWorkDirectory()+path.getOutput()+"/DockerBuildImages_1.csv"));
         filemanager.deleteFile(filemanager.getWorkDirectory()+path.getOutput()+"/DockerBuildImages_1.csv");
+        
+        DockerImage dockerImage = new DockerImage("example","sudo docker build -t example .");
+        dockerImage.setBuildable(true);
+        dockerImage.addOneTimeDockerImageBuild(100);
+        
+        assertFalse(filemanager.fileExist(filemanager.getWorkDirectory()+path.getOutput()+"/DokerBuildImagesDataSet[prova].csv"));
+        csvmanager.writeDockerImageSingleBuildResult(dockerImage,"DokerBuildImagesDataSet[prova].csv");
+        assertTrue(filemanager.fileExist(filemanager.getWorkDirectory()+path.getOutput()+"/DokerBuildImagesDataSet[prova].csv"));
+        
+        filemanager.deleteFile(filemanager.getWorkDirectory()+path.getOutput()+"/DokerBuildImagesDataSet[prova].csv.csv");
+        
         
     }
 }

@@ -32,14 +32,14 @@ public class CSVmanager {
         fileManager = new FileManager();
     }
 
-    public Collection<String[]> readCSVDockerImageList(String pDockerImageListFile) throws FileNotFoundException, URISyntaxException, IOException {
+    public Collection<String[]> readCSVDockerImageList(String pDockerImageListFile, String pInputOrOutput) throws FileNotFoundException, URISyntaxException, IOException {
 
         path = new Path();
         fileManager = new FileManager();
 
         ArrayList<String[]> rawDockerList = new ArrayList<>();
         String dockerBuildImagesCmdsCSVfile = fileManager.getWorkDirectory()
-                + path.getInput()
+                + pInputOrOutput
                 + pDockerImageListFile;
 
         //Build reader instance
@@ -57,6 +57,42 @@ public class CSVmanager {
             rawDockerList.add(row);
         });
         return rawDockerList;
+    }
+
+    public void writeDockerImageSingleBuildResult(DockerImage pDockerImage, String pCSVdataset) throws IOException {
+
+        Path path = new Path();
+        FileManager fileManager = new FileManager();
+
+        String dataCSV = pCSVdataset;
+        File file = null;
+        CSVWriter writer;
+
+        if (!fileManager.fileExist(fileManager.getWorkDirectory() + path.getOutput() + "//" + dataCSV)) {
+            file = new File(fileManager.getWorkDirectory() + path.getOutput().concat("//" + dataCSV));
+        }
+        System.out.println("PATH" + file.getAbsolutePath());
+
+        // create a List which contains String array 
+        List<String[]> data = new ArrayList<>();
+        writer = new CSVWriter(new FileWriter(fileManager.getWorkDirectory()
+                + path.getOutput().concat("//" + dataCSV), true), ',');
+
+        String[] record = {
+            pDockerImage.getName(),
+            pDockerImage.getCommand(),
+            Integer.toString(pDockerImage.getNumberOfBuild()),
+            String.valueOf(pDockerImage.isBuildable()),
+            Integer.toString(pDockerImage.getBuildingTime()[0]),
+            String.valueOf(pDockerImage.getAverageBuildTime())
+        };
+
+        data.add(record);
+
+        writer.writeNext(record);
+
+        // closing writer connection 
+        writer.close();
     }
 
     //This method is more expensive if you execute them in pipeline
