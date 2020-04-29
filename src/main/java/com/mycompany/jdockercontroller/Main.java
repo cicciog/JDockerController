@@ -18,6 +18,7 @@ public class Main {
         DockerController dockerController = new DockerController();
         try {
             System.out.println(dockerController.checkDockerVersion().toString());
+            dockerController.getAllDockerImages();
         } catch (IOException | InterruptedException ex) {
             System.out.println(ex.getMessage());
         } 

@@ -4,8 +4,10 @@ import fileManager.Path;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-
+import java.util.List;
 
 /**
  *
@@ -21,7 +23,7 @@ public class DockerController {
 
     public HashMap checkDockerVersion() throws IOException, InterruptedException {
 
-        // Create a hash map
+        // Create an hash map
         HashMap client = new HashMap();
         HashMap server = new HashMap();
         HashMap version = new HashMap();
@@ -52,14 +54,18 @@ public class DockerController {
             count++;
         }
         process.destroy();
-        
-        version.put("client",client);
-        version.put("server",server);
-        
+
+        version.put("client", client);
+        version.put("server", server);
+
         return version;
     }
 
-    public void getAllDockerContainers() throws IOException, InterruptedException {
+    public Collection<HashMap> getAllDockerContainers() throws IOException, InterruptedException {
+        HashMap dockerContainer;
+        List<String> list = new ArrayList<>();
+        List<HashMap> containers = new ArrayList<>();
+
         processBuilder.command("/bin/bash", "-c", "sudo docker ps");
         Process process = processBuilder.start();
 
@@ -67,16 +73,34 @@ public class DockerController {
                 = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
         String line;
+        String[] fields;
+        int count = 0;
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
+            fields = line.split("\\s*(=>|,|\\s)\\s*");
+            if (count == 0) {
+                list.add(fields[0]+ "_" + fields[1]);
+                list.add(fields[2]); 
+                list.add(fields[3]);
+                list.add(fields[4]);
+                list.add(fields[5]);
+                list.add(fields[5]);
+            } else {
+                dockerContainer = new HashMap();
+                dockerContainer.put(list.get(0), fields[0]);
+                containers.add(dockerContainer);
+            }
+            count++;
         }
 
-        int exitCode = process.waitFor();
-        System.out.println("\nExited with error code : " + exitCode);
-
+        process.destroy();
+        return containers;
     }
 
-    public void getAllDockerImages() throws IOException, InterruptedException {
+    public Collection<HashMap> getAllDockerImages() throws IOException, InterruptedException {
+        HashMap dockerImage;
+        List<String> list = new ArrayList<>();
+        List<HashMap> images = new ArrayList<>();
+
         processBuilder.command("/bin/bash", "-c", "sudo docker images");
         Process process = processBuilder.start();
 
@@ -84,12 +108,31 @@ public class DockerController {
                 = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
         String line;
+        String[] fields;
+        int count = 0;
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
+            fields = line.split("\\s*(=>|,|\\s)\\s*");
+            if (count == 0) {
+                list.add(fields[0]);
+                list.add(fields[1]);
+                list.add(fields[2] + "_" + fields[3]);
+                list.add(fields[4]);
+                list.add(fields[5]);
+            } else {
+                dockerImage = new HashMap();
+                dockerImage.put(list.get(0), fields[0]);
+                dockerImage.put(list.get(1), fields[1]);
+                dockerImage.put(list.get(2), fields[2]);
+                dockerImage.put(list.get(3), fields[3] + " " + fields[4] + " " + fields[5]);
+                dockerImage.put(list.get(4), fields[6]);
+
+                images.add(dockerImage);
+            }
+            count++;
         }
 
-        int exitCode = process.waitFor();
-        System.out.println("\nExited with error code : " + exitCode);
+        process.destroy();
+        return images;
     }
 
     public void removeAllImages() throws IOException, InterruptedException {
