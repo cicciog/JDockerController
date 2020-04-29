@@ -147,8 +147,7 @@ public class DockerController {
             System.out.println(line);
         }
 
-        int exitCode = process.waitFor();
-        System.out.println("\nExited with error code : " + exitCode);
+        process.destroy();
     }
 
     public void removeAllContainers() throws IOException, InterruptedException {

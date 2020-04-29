@@ -51,13 +51,16 @@ public class TestDockerController {
         //check if there are built containers
         assertTrue(dockerController.getAllDockerContainers().size() == 0);
         assertTrue(dockerController.getAllDockerContainers().isEmpty());
-        
-        cmd = fileManager.getWorkDirectory()+"/input/example/"+".";
-        dockerController.buildDockerImage("example",cmd);
+
+        cmd = fileManager.getWorkDirectory() + "/input/example/" + ".";
+        dockerController.buildDockerImage("example", cmd);
         //check if there are built images
         assertFalse(dockerController.getAllDockerImages().size() == 0);
         assertFalse(dockerController.getAllDockerImages().isEmpty());
-        
+
+        dockerController.removeAllImages();
+        assertTrue(dockerController.getAllDockerContainers().size() == 0);
+        assertTrue(dockerController.getAllDockerContainers().isEmpty());
 
     }
 
