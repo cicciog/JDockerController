@@ -17,5 +17,11 @@
   "license": "MIT",
   "dependencies": {
     "docker-file-parser": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/tape": "^4.13.0"
+  },
+  "directories": {
+    "test": "test"
   }
 }
