@@ -45,4 +45,6 @@ Build an image from a Dockerfile
     <version>4.6</version>
 </dependency>
 ```
+## Cloning git repositories
+This project involve a git cloner, which read a list of Github :octocat: repository and fetch automatically them in pipeline using a Jgit java library imported with maven in the dependencies of pom.xml file. Each repository contains a docker image with its dockerfile :whale: :octopus:.
 
