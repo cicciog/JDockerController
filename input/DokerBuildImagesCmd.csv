@@ -1,3 +1,4 @@
+name,command
 31z4_zookeeper-docker,docker build -t 31z4_zookeeper-docker \31z4_zookeeper-docker\3.6.0\.
 ahawkins_docker-thrift,docker build -t ahawkins_docker-thrift \ahawkins_docker-thrift\0.12\.
 alpinelinux_docker-alpine,docker build -t alpinelinux_docker-alpine \docker-alpine\.

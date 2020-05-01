@@ -16,10 +16,12 @@
   "author": "cicciog",
   "license": "MIT",
   "dependencies": {
+    "chai": "^4.2.0",
     "docker-file-parser": "^1.0.4"
   },
   "devDependencies": {
-    "@types/tape": "^4.13.0"
+    "@types/tape": "^4.13.0",
+    "mocha": "^7.1.2"
   },
   "directories": {
     "test": "test"

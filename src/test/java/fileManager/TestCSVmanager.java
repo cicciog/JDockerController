@@ -81,7 +81,7 @@ public class TestCSVmanager {
         csvmanager.writeDockerImageSingleBuildResult(dockerImage,"DokerBuildImagesDataSet[prova].csv");
         assertTrue(filemanager.fileExist(filemanager.getWorkDirectory()+path.getOutput()+"/DokerBuildImagesDataSet[prova].csv"));
         
-        filemanager.deleteFile(filemanager.getWorkDirectory()+path.getOutput()+"/DokerBuildImagesDataSet[prova].csv.csv");
+        filemanager.deleteFile(filemanager.getWorkDirectory()+path.getOutput()+"/DokerBuildImagesDataSet[prova].csv");
         
         
     }

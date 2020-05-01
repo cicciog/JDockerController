@@ -38,7 +38,7 @@ exports.createJson = (pDockerName, pCommands) =>{
     let jsonContent = JSON.stringify(object);
     console.log(jsonContent);
 
-    fs.writeFile('./output/' + pDockerName + '.json', jsonContent, 'utf8', function (err) {
+    fs.writeFile('../../output/' + pDockerName + '.json', jsonContent, 'utf8', function (err) {
         if (err) {
             console.log("An error occured while writing JSON Object to File.");
             return console.log(err);

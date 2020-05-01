@@ -1,12 +1,4 @@
 
-import fileManager.CSVmanager;
-import fileManager.FileManager;
-import fileManager.Path;
-import gitCloner.GitCloner;
-import gitCloner.Repository;
-import java.io.IOException;
-import java.util.ArrayList;
-import org.eclipse.jgit.api.errors.GitAPIException;
 
 /**
  *
