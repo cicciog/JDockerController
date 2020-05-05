@@ -136,7 +136,7 @@ public class DockerController {
     }
 
     public void removeAllImages() throws IOException, InterruptedException {
-        processBuilder.command("/bin/bash", "-c", "docker rmi $(sudo docker images -q)");
+        processBuilder.command("/bin/bash", "-c", "sudo docker rmi $(sudo docker images -q)");
         Process process = processBuilder.start();
 
         BufferedReader reader
@@ -167,7 +167,7 @@ public class DockerController {
     }
 
     public void buildDockerImage(String pName, String pSource) throws IOException, InterruptedException {
-        processBuilder.command("/bin/bash", "-c", "sudo docker build -t " + pName + " " + pSource);
+        processBuilder.command("/bin/bash", "-c","sudo docker build -t " + pName + " " + pSource);
         Process process = processBuilder.start();
 
         BufferedReader reader
