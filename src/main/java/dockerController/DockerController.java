@@ -151,7 +151,7 @@ public class DockerController {
     }
 
     public void removeAllContainers() throws IOException, InterruptedException {
-        processBuilder.command("/bin/bash", "-c", "docker rm $(sudo docker ps -a -q)");
+        processBuilder.command("/bin/bash", "-c", "sudo docker rm $(sudo docker ps -a -q)");
         Process process = processBuilder.start();
 
         BufferedReader reader
