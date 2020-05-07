@@ -239,4 +239,73 @@ public class FeaturesEntity {
                 + ", name=" + name + '}';
     }
 
+    public void setFROM(int FROM) {
+        this.FROM = FROM;
+    }
+
+    public void setLABEL(int LABEL) {
+        this.LABEL = LABEL;
+    }
+
+    public void setENV(int ENV) {
+        this.ENV = ENV;
+    }
+
+    public void setRUN(int RUN) {
+        this.RUN = RUN;
+    }
+
+    public void setVOLUME(int VOLUME) {
+        this.VOLUME = VOLUME;
+    }
+
+    public void setCOPY(int COPY) {
+        this.COPY = COPY;
+    }
+
+    public void setENTRYPOINT(int ENTRYPOINT) {
+        this.ENTRYPOINT = ENTRYPOINT;
+    }
+
+    public void setCMD(int CMD) {
+        this.CMD = CMD;
+    }
+
+    public void setWORKDIR(int WORKDIR) {
+        this.WORKDIR = WORKDIR;
+    }
+
+    public void setUSER(int USER) {
+        this.USER = USER;
+    }
+
+    public void setEXPOSE(int EXPOSE) {
+        this.EXPOSE = EXPOSE;
+    }
+
+    public void setMAINTAINER(int MAINTAINER) {
+        this.MAINTAINER = MAINTAINER;
+    }
+
+    public void setARG(int ARG) {
+        this.ARG = ARG;
+    }
+
+    public void setSTOPSIGNAL(int STOPSIGNAL) {
+        this.STOPSIGNAL = STOPSIGNAL;
+    }
+
+    public void setADD(int ADD) {
+        this.ADD = ADD;
+    }
+
+    public void setSHELL(int SHELL) {
+        this.SHELL = SHELL;
+    }
+
+    public void setNumberOfFeatures(int numberOfFeatures) {
+        this.numberOfFeatures = numberOfFeatures;
+    }
+
+    
 }

@@ -5,6 +5,7 @@ import dockerController.DockerImage;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+import featuresExtractor.FeaturesEntity;
 import gitCloner.Repository;
 import java.io.BufferedReader;
 import java.io.File;
@@ -174,10 +175,10 @@ public class CSVmanager {
     }
 
     public Collection<DockerImage> readTenBuildingCSVandMergeintoOne() {
-        
+
         fileManager = new FileManager();
         path = new Path();
-        
+
         FileReader reader1 = null;
         FileReader reader2 = null;
         FileReader reader3 = null;
@@ -189,20 +190,20 @@ public class CSVmanager {
         FileReader reader9 = null;
         FileReader reader10 = null;
         ArrayList<DockerImage> dockerImageList = null;
-        String relativePathOfOIutputFolder = fileManager.getWorkDirectory()+path.getOutput();
+        String relativePathOfOIutputFolder = fileManager.getWorkDirectory() + path.getOutput();
 
         try {
 
-            reader1 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_1.csv");
-            reader2 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_2.csv");
-            reader3 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_3.csv");
-            reader4 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_4.csv");
-            reader5 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_5.csv");
-            reader6 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_6.csv");
-            reader7 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_7.csv");
-            reader8 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_8.csv");
-            reader9 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_9.csv");
-            reader10 = new FileReader(relativePathOfOIutputFolder+"/DokerBuildImagesDataSet_10.csv");
+            reader1 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_1.csv");
+            reader2 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_2.csv");
+            reader3 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_3.csv");
+            reader4 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_4.csv");
+            reader5 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_5.csv");
+            reader6 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_6.csv");
+            reader7 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_7.csv");
+            reader8 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_8.csv");
+            reader9 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_9.csv");
+            reader10 = new FileReader(relativePathOfOIutputFolder + "/DokerBuildImagesDataSet_10.csv");
 
             CSVReader csvReader1 = new CSVReader(reader1);
             ArrayList<String[]> list1 = new ArrayList<>();
@@ -372,7 +373,7 @@ public class CSVmanager {
         return dockerImageList;
     }
 
-    public void writeDockerImagesMultipleBuildResult(Collection<DockerImage> pDockerImageList,String pNameDataCSV) throws IOException {
+    public void writeDockerImagesMultipleBuildResult(Collection<DockerImage> pDockerImageList, String pNameDataCSV) throws IOException {
 
         Path path = new Path();
         FileManager fileManager = new FileManager();
@@ -381,9 +382,9 @@ public class CSVmanager {
         File file = null;
         CSVWriter writer;
 
-        CSVWriter csvwriter; 
-        csvwriter = new CSVWriter(new FileWriter(fileManager.getWorkDirectory() + path.getOutput()+"//" + dataCSV), ',');
-        
+        CSVWriter csvwriter;
+        csvwriter = new CSVWriter(new FileWriter(fileManager.getWorkDirectory() + path.getOutput() + "//" + dataCSV), ',');
+
         for (DockerImage dockerImage : pDockerImageList) {
             String[] record = {
                 dockerImage.getName(),
@@ -402,11 +403,131 @@ public class CSVmanager {
                 Integer.toString(dockerImage.getBuildingTime()[9]),
                 String.valueOf(dockerImage.getAverageBuildTime())
             };
-            
+
             csvwriter.writeNext(record);
         }
         pDockerImageList.clear();
         csvwriter.close();
+    }
+
+    public void writeDockerImagesFeaturesFromList(Collection<FeaturesEntity> pFilesFeatures, String pFilePath) throws IOException {
+        // first create file object for file placed at location 
+        // specified by filepath 
+        File file = new File(pFilePath);
+        String features[] = {"FROM",
+            "LABEL",
+            "ENV",
+            "RUN",
+            "VOLUME",
+            "COPY",
+            "ENTRYPOINT",
+            "CMD",
+            "WORKDIR",
+            "USER",
+            "EXPOSE",
+            "MAINTAINER",
+            "ARG",
+            "STOPSIGNAL",
+            "ADD",
+            "SHELL"};
+
+        // create FileWriter object with file as parameter 
+        FileWriter outputfile = new FileWriter(file);
+
+        // create CSVWriter object filewriter object as parameter 
+        CSVWriter writer = new CSVWriter(outputfile);
+
+        // adding header to csv 
+        String[] header = {"name", features[0], features[1], features[2], features[3], features[4],
+            features[5], features[6], features[7], features[8], features[9], features[10], features[11],
+            features[12], features[13], features[14], features[15], "numberOfFeatures"};
+        writer.writeNext(header);
+
+        ArrayList<FeaturesEntity> fileListFeatures = (ArrayList<FeaturesEntity>) pFilesFeatures;
+        // add data to csv 
+        for (int i = 0; i < pFilesFeatures.size(); i++) {
+            String[] data = {fileListFeatures.get(i).getName(),
+                String.valueOf(fileListFeatures.get(i).getFROM()),
+                String.valueOf(fileListFeatures.get(i).getLABEL()),
+                String.valueOf(fileListFeatures.get(i).getENV()),
+                String.valueOf(fileListFeatures.get(i).getRUN()),
+                String.valueOf(fileListFeatures.get(i).getVOLUME()),
+                String.valueOf(fileListFeatures.get(i).getCOPY()),
+                String.valueOf(fileListFeatures.get(i).getENTRYPOINT()),
+                String.valueOf(fileListFeatures.get(i).getCMD()),
+                String.valueOf(fileListFeatures.get(i).getWORKDIR()),
+                String.valueOf(fileListFeatures.get(i).getUSER()),
+                String.valueOf(fileListFeatures.get(i).getEXPOSE()),
+                String.valueOf(fileListFeatures.get(i).getMAINTAINER()),
+                String.valueOf(fileListFeatures.get(i).getARG()),
+                String.valueOf(fileListFeatures.get(i).getSTOPSIGNAL()),
+                String.valueOf(fileListFeatures.get(i).getADD()),
+                String.valueOf(fileListFeatures.get(i).getSHELL()),
+                String.valueOf(fileListFeatures.get(i).getNumberOfFeatures())};
+
+            writer.writeNext(data);
+
+        }
+
+        // closing writer connection 
+        writer.close();
+
+    }
+
+    // CSV file line by line 
+    public Collection<FeaturesEntity> readDockerImagesFeaturesFromFile(String pFilePath) throws IOException {
+
+        Path path = new Path();
+        FileManager fileManager = new FileManager();
+        FeaturesEntity featureEntity;
+        List<FeaturesEntity> listEntitiesFeatures;
+
+        // Create an object of filereader 
+        // class with CSV file as a parameter. 
+        FileReader filereader = new FileReader(fileManager.getWorkDirectory()
+                + path.getOutput()
+                + "/"
+                + pFilePath);
+
+        // create csvReader object passing 
+        // file reader as a parameter 
+        CSVReader csvReader = new CSVReader(filereader);
+        String[] nextRecord;
+
+        listEntitiesFeatures = new ArrayList<>();
+        // we are going to read data line by line
+        int count = 0;
+        while ((nextRecord = csvReader.readNext()) != null) {
+            if (count > 0) {
+                featureEntity = new FeaturesEntity();
+                System.out.println(nextRecord[0].toString());
+                featureEntity.setName(nextRecord[0]);
+                featureEntity.setFROM(Integer.parseInt(nextRecord[1]));
+                featureEntity.setLABEL(Integer.parseInt(nextRecord[2]));
+                featureEntity.setENV(Integer.parseInt(nextRecord[3]));
+                featureEntity.setRUN(Integer.parseInt(nextRecord[4]));
+                featureEntity.setVOLUME(Integer.parseInt(nextRecord[5]));
+                featureEntity.setCOPY(Integer.parseInt(nextRecord[6]));
+                featureEntity.setENTRYPOINT(Integer.parseInt(nextRecord[7]));
+                featureEntity.setCMD(Integer.parseInt(nextRecord[8]));
+                featureEntity.setWORKDIR(Integer.parseInt(nextRecord[9]));
+                featureEntity.setUSER(Integer.parseInt(nextRecord[10]));
+                featureEntity.setEXPOSE(Integer.parseInt(nextRecord[11]));
+                featureEntity.setMAINTAINER(Integer.parseInt(nextRecord[12]));
+                featureEntity.setARG(Integer.parseInt(nextRecord[13]));
+                featureEntity.setSTOPSIGNAL(Integer.parseInt(nextRecord[14]));
+                featureEntity.setADD(Integer.parseInt(nextRecord[15]));
+                featureEntity.setSHELL(Integer.parseInt(nextRecord[16]));
+                featureEntity.setNumberOfFeatures(Integer.parseInt(nextRecord[17]));
+
+                listEntitiesFeatures.add(featureEntity);
+            }
+
+            count++;
+
+        }
+
+        return listEntitiesFeatures;
     }
 
 }

@@ -1,5 +1,8 @@
 
+import featuresExtractor.FeatureExtractor;
 import featuresExtractor.FeaturesEntity;
+import featuresExtractor.FilesNotFoundException;
+import fileManager.CSVmanager;
 import fileManager.FileManager;
 import fileManager.Path;
 import java.io.FileReader;
@@ -9,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -27,69 +32,22 @@ public class Main {
 
         FileManager fileManager = new FileManager();
         Path path = new Path();
-        String features[] = {"FROM",
-            "LABEL",
-            "ENV",
-            "RUN",
-            "VOLUME",
-            "COPY",
-            "ENTRYPOINT",
-            "CMD",
-            "WORKDIR",
-            "USER",
-            "EXPOSE",
-            "MAINTAINER",
-            "ARG",
-            "STOPSIGNAL",
-            "ADD",
-            "SHELL"};
-        List<String> listOfFeatures = Arrays.asList(features);
-        List<FeaturesEntity> listOfFiles = new ArrayList<>();
-        FeaturesEntity featuresEntity;
+        FeatureExtractor featureextractor = new FeatureExtractor();
+        ArrayList<FeaturesEntity> list;
+        CSVmanager csvmanager = new CSVmanager();
+        
+        try {
 
-        String[] jsonFiles = fileManager.getFileListInADirectory(fileManager.getWorkDirectory() + path.getInput() + "/json");
-
-        int count = 0;
-        while (count < jsonFiles.length) {
-            System.out.println("\n" + jsonFiles[count] + "\n");
-
-            JSONParser parser = new JSONParser();
-            featuresEntity = new FeaturesEntity(jsonFiles[count]);
-
-            try (Reader reader = new FileReader(fileManager.getWorkDirectory() + path.getInput() + "/json/" + jsonFiles[count])) {
-
-                JSONObject jsonObject = (JSONObject) parser.parse(reader);
-                //System.out.println(jsonObject);
-
-                // loop array
-                JSONArray docker = (JSONArray) jsonObject.get("docker");
-                for (int i = 0; i < docker.size(); i++) {
-                    JSONObject image = (JSONObject) docker.get(i);
-
-                    if (listOfFeatures.contains(image.get("name"))) {
-                        featuresEntity.addFeature(image.get("name").toString().trim());
-                    }
-                }
-
-            } catch (IOException | ParseException e) {
-                System.out.println(e.getMessage());
-            }
-
-            listOfFiles.add(featuresEntity);
-            count++;
+          //list = (ArrayList<FeaturesEntity>) featureextractor.extrcatAllFeaturesOfDockerImagesCollection(fileManager.getWorkDirectory()+path.getInput()+"/json/");
+          //csvmanager.writeDockerImagesFeaturesFromList(list,fileManager.getWorkDirectory()+path.getOutput()+"/DockerImagesFeatures.csv");
+          list = (ArrayList<FeaturesEntity>) csvmanager.readDockerImagesFeaturesFromFile("DockerImagesFeatures.csv");
+          for(FeaturesEntity item : list){
+              System.out.println(item.toString());
+          }
+        } catch (IOException  ex) {
+            System.out.println(ex.getMessage());
         }
-
-        // Iterator to traverse the list 
-        Iterator iterator = listOfFiles.iterator();
-
-        System.out.println(
-                "Features : ");
-
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next().toString() + " ");
-            System.out.println();
-        }
-
+       
     }
 
 }
