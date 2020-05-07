@@ -1,0 +1,16 @@
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/dockerController/TestDockerImageRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/fileManager/TestCSVmanagerRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/gitCloner/TestRepository.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/fileManager/TestCSVmanager.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/fileManager/TestPathRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/gitCloner/TestGitCloner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/fileManager/TestFileManager.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/gitCloner/TestGitClonerRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/dockerController/TestDockerImageBuild.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/gitCloner/TestRepositoryRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/dockerController/TestDockerImageBuildRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/dockerController/TestDockerImage.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/dockerController/TestDockerControllerRunner.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/fileManager/TestPath.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/dockerController/TestDockerController.java
+/home/francesco/NetBeansProjects/JDockerController/JDockerController/src/test/java/fileManager/TestFileManagerRunner.java

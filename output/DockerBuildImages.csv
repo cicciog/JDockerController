@@ -70,7 +70,7 @@ influxdata_influxdata-docker,docker build -t influxdata_influxdata-docker influx
 jenkinsci_docker,docker build -t jenkinsci_docker jenkinsci_docker.,10,true,944,996,1094,799,766,767,847,917,904,1139,917.3,"123,238021730309","15187,61",application_platform,84
 jessfraz_irssi,docker build -t jessfraz_irssi jessfraz_irssidebian.,10,false,433,451,669,419,385,395,412,449,416,462,449.1,"76,940821414903","5919,89",web_component,93
 joomla_docker-joomla,docker build -t joomla_docker-joomla joomla_docker-joomlaphp7.4apache.,10,true,248,307,353,254,242,241,314,248,290,303,280.0,"36,7858668512786","1353,2",application_platform,85
-juanluisbaptiste_docker-brew-mageia,docker build -t juanluisbaptiste_docker-brew-mageia juanluisbaptiste_docker-brew-mageiadist6armv7hl.,10,true,1119,1300,1053,2,2,2,2,2,2,2,2.3,"0,640312423743285","0,41",linux_distro,10
+juanluisbaptiste_docker-brew-mageia,docker build -t juanluisbaptiste_docker-brew-mageia juanluisbaptiste_docker-brew-mageiadist6armv7hl.,10,true,1119,1300,1053,1114,1616,1078,961,981,919,953,"1109,4","199,116649228536","39647,44",linux_distro,10
 kaazing_gateway.docker,docker build -t kaazing_gateway.docker kaazing_gateway.docker.,10,false,17,16,20,16,17,17,16,15,15,16,16.5,"1,36014705087354","1,85",other,39
 keeganwitt_docker-gradle,docker build -t keeganwitt_docker-gradle keeganwitt_docker-gradlejdk8.,10,true,622,628,783,570,516,509,545,665,607,620,606.5,"76,3351164275001","5827,05",other,51
 Lightstreamer_Docker,docker build -t Lightstreamer_Docker Lightstreamer_Docker7.1jdk11.,10,true,1075,1084,1174,1094,1075,1076,1138,1108,1096,1260,1118,"56,1052582205982","3147,8",web_component,47

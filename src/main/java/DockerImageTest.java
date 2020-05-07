@@ -15,7 +15,7 @@ public class DockerImageTest {
         DockerController dockercontroller = new DockerController();
 
         //mageia
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 2; i++) {
             dockercontroller.removeAllImages();
             int start1 = dockercontroller.getStartTime();
             dockercontroller.buildDockerImage("mageia","/home/francesco/Documenti/repositories/juanluisbaptiste_docker-brew-mageia/build2release/.");

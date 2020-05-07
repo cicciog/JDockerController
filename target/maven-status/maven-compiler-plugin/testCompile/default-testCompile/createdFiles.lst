@@ -1,0 +1,16 @@
+dockerController/TestDockerControllerRunner.class
+gitCloner/TestRepository.class
+fileManager/TestFileManager.class
+fileManager/TestPath.class
+gitCloner/TestRepositoryRunner.class
+fileManager/TestCSVmanagerRunner.class
+fileManager/TestCSVmanager.class
+gitCloner/TestGitCloner.class
+dockerController/TestDockerImageBuildRunner.class
+dockerController/TestDockerImage.class
+gitCloner/TestGitClonerRunner.class
+fileManager/TestFileManagerRunner.class
+dockerController/TestDockerImageRunner.class
+dockerController/TestDockerController.class
+fileManager/TestPathRunner.class
+dockerController/TestDockerImageBuild.class
