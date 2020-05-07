@@ -1,3 +1,0 @@
-"name","FROM","LABEL","ENV","RUN","VOLUME","COPY","ENTRYPOINT","CMD","WORKDIR","USER","EXPOSE","MAINTAINER","ARG","STOPSIGNAL","ADD","SHELL","numberOfFeatures"
-"heroguard","1","0","0","6","0","0","0","1","0","0","0","1","0","0","0","0","9"
-"ImageAnalyzer","1","0","0","8","1","0","1","1","0","0","0","0","3","0","0","0","15"
