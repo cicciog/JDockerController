@@ -21,24 +21,9 @@ public class FeaturesEntity {
     private int STOPSIGNAL = 0;
     private int ADD = 0;
     private int SHELL = 0;
+    //total amount of feature in a json file
     private int numberOfFeatures = 0;
-    private String features[] = {"FROM",
-        "LABEL",
-        "ENV",
-        "RUN",
-        "VOLUME",
-        "COPY",
-        "ENTRYPOINT",
-        "CMD",
-        "WORKDIR",
-        "USER",
-        "EXPOSE",
-        "MAINTAINER",
-        "ARG",
-        "STOPSIGNAL",
-        "ADD",
-        "SHELL"};
-
+    //json file name
     private String name;
 
     //Constructor with param
@@ -226,10 +211,6 @@ public class FeaturesEntity {
         return numberOfFeatures;
     }
 
-    public String[] getFeatures() {
-        return features;
-    }
-
     public String getName() {
         return name;
     }
@@ -253,7 +234,6 @@ public class FeaturesEntity {
                 + ", ADD=" + ADD
                 + ", SHELL=" + SHELL
                 + ", numberOfFeatures=" + numberOfFeatures
-                + ", features=" + features
                 + ", name=" + name + '}';
     }
 

@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import org.json.simple.JSONArray;
@@ -25,14 +26,34 @@ public class Main {
 
         FileManager fileManager = new FileManager();
         Path path = new Path();
-        List<String> features = new ArrayList<>();
+        String features[] = {"FROM",
+            "LABEL",
+            "ENV",
+            "RUN",
+            "VOLUME",
+            "COPY",
+            "ENTRYPOINT",
+            "CMD",
+            "WORKDIR",
+            "USER",
+            "EXPOSE",
+            "MAINTAINER",
+            "ARG",
+            "STOPSIGNAL",
+            "ADD",
+            "SHELL"};
+        List<String> listOfFeatures = Arrays.asList(features);
+        List<FeaturesEntity> listOfFiles = new ArrayList<>();
+        FeaturesEntity featuresEntity;
 
         String[] jsonFiles = fileManager.getFileListInADirectory(fileManager.getWorkDirectory() + path.getInput() + "/json");
+
         int count = 0;
         while (count < jsonFiles.length) {
-            System.out.println("\n"+jsonFiles[count] + "\n");
+            System.out.println("\n" + jsonFiles[count] + "\n");
 
             JSONParser parser = new JSONParser();
+            featuresEntity = new FeaturesEntity(jsonFiles[count]);
 
             try (Reader reader = new FileReader(fileManager.getWorkDirectory() + path.getInput() + "/json/" + jsonFiles[count])) {
 
@@ -44,8 +65,8 @@ public class Main {
                 for (int i = 0; i < docker.size(); i++) {
                     JSONObject image = (JSONObject) docker.get(i);
 
-                    if (!features.contains(image.get("name"))) {
-                        features.add((String) image.get("name"));
+                    if (listOfFeatures.contains(image.get("name"))) {
+                        featuresEntity.addFeature(image.get("name").toString().trim());
                     }
                 }
 
@@ -53,20 +74,21 @@ public class Main {
                 System.out.println(e.getMessage());
             }
 
+            listOfFiles.add(featuresEntity);
             count++;
         }
-        
+
         // Iterator to traverse the list 
-        Iterator iterator = features.iterator(); 
-  
-        System.out.println("Features : "); 
-  
+        Iterator iterator = listOfFiles.iterator();
+
+        System.out.println(
+                "Features : ");
+
         while (iterator.hasNext()) {
-          System.out.print(iterator.next() + " ");   
-          System.out.println(); 
+            System.out.print(iterator.next().toString() + " ");
+            System.out.println();
         }
-        
-        
+
     }
 
 }
