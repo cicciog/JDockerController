@@ -1,4 +1,5 @@
 
+import featuresExtractor.FeaturesEntity;
 import fileManager.FileManager;
 import fileManager.Path;
 import java.io.FileReader;

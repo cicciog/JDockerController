@@ -1,3 +1,5 @@
+package featuresExtractor;
+
 
 import fileManager.FileManager;
 import fileManager.Path;
