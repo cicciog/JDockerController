@@ -4,8 +4,13 @@ import fileManager.FileManager;
 import fileManager.Path;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import junit.framework.TestCase;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.assertTrue;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,9 +52,22 @@ public class TestFeatureExtractor {
         featureEntity.addFeature("CMD");
         
         assertEquals(featureEntity.toString(),featureExtractor.extractAllImageFeatures(jsonFiles[0]).toString());
+
+    }
+    
+    @Test
+    public void testExtrcatAllFeaturesOfDockerImagesCollection() throws FilesNotFoundException, IOException, FileNotFoundException, ParseException{
+        assertNotNull(featureExtractor);
         
+        String source = fileManager.getWorkDirectory()+path.getInput()+"/json/";
+        ArrayList<FeaturesEntity> filesFeatures = (ArrayList<FeaturesEntity>) featureExtractor.extrcatAllFeaturesOfDockerImagesCollection(source);
         
+        assertTrue(filesFeatures.size() > 0);
+        assertFalse(filesFeatures.isEmpty());
         
+        assertNotNull(filesFeatures.get(0));
+        assertNotNull(filesFeatures.get(filesFeatures.size()-1));
+        assertNotNull(filesFeatures.get(filesFeatures.size() / 2));
 
     }
 }
