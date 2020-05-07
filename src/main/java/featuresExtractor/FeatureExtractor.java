@@ -1,6 +1,5 @@
 package featuresExtractor;
 
-
 import fileManager.FileManager;
 import fileManager.Path;
 import java.io.FileNotFoundException;
@@ -67,11 +66,9 @@ public class FeatureExtractor {
     }
 
     public Collection<FeaturesEntity> extrcatAllFeaturesOfDockerImagesCollection(String pSource) throws FilesNotFoundException, FileNotFoundException, IOException, ParseException {
-        
+
         List<FeaturesEntity> listOfFiles;
-        String[] jsonFiles = fileManager.getFileListInADirectory(fileManager.getWorkDirectory()
-                + path.getInput()
-                + "/json");
+        String[] jsonFiles = fileManager.getFileListInADirectory(pSource);
 
         if (jsonFiles.length > 0) {
             listOfFiles = new ArrayList<>();
@@ -82,14 +79,11 @@ public class FeatureExtractor {
 
                 JSONParser parser = new JSONParser();
                 featuresEntity = new FeaturesEntity(jsonFiles[count]);
-
-                Reader reader = new FileReader(fileManager.getWorkDirectory()
-                        + path.getInput()
-                        + "/json/"
-                        + jsonFiles[count]);
-
+                //read json file
+                Reader reader = new FileReader(pSource + jsonFiles[count]);
+                //parse Json file
                 JSONObject jsonObject = (JSONObject) parser.parse(reader);
-                //System.out.println(jsonObject);
+                
 
                 // loop array
                 JSONArray docker = (JSONArray) jsonObject.get("docker");
