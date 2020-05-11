@@ -1,9 +1,9 @@
 name,command,numeberOfExecution,buildable,build1,build2,build3,build4,build5,build6,build7,build8,build9,build10,averageTime,σ_std_dev,variance,category,dockerfile_LOC
 31z4_zookeeper-docker,docker build -t 31z4_zookeeper-docker 31z4_zookeeper-docker3.6.0.,10,false,157,674,289,138,91,278,275,281,267,548,299.8,"171,590675737349","29443,36",web_component,84
 ahawkins_docker-thrift,docker build -t ahawkins_docker-thrift ahawkins_docker-thrift0.12.,10,true,658,715,788,615,643,631,671,650,736,751,685.8,"54,9450634725268","3018,96",application_platform,41
-alpinelinux_docker-alpine,docker build -t alpinelinux_docker-alpine docker-alpine.,10,true,24,30,33,23,24,24,29,25,23,31,26.6,"3,55527776692624","12,64",linux_distro,8
+alpinelinux_docker-alpine,docker build -t alpinelinux_docker-alpine docker-alpine.,10,true,24,30,33,23,24,24,29,25,23,31,26.6,"3,55527776692624","12,64",linux_distro,5
 apache_couchdb-docker,docker build -t apache_couchdb-docker apache_couchdb-docker3.0.0.,10,true,406,424,220,326,315,330,376,326,582,338,364.3,"89,9378118479653","8088,81",database,140
-appropriate_docker-jetty,docker build -t appropriate_docker-jetty appropriate_docker-jetty9.4-jre8.,10,false,287,279,303,279,282,282,495,283,289,571,335.0,"100,664790269488","10133,4",web_component,
+appropriate_docker-jetty,docker build -t /repositories/appropriate_docker-jetty/9.4-jdk13,10,true,729,667,683,586,583,629,809,690,572,580,"652,8","73,7777744310575","5443,16",web_component,85
 arangodb_arangodb-docker,docker build -t arangodb_arangodb-docker arangodb_arangodb-dockeralpine3.4.0.,10,false,147,151,200,130,132,136,145,145,33,181,140.0,"41,3884041731498",1713,database,
 aws_aws-eb-glassfish-dockerfiles,docker build -t aws_aws-eb-glassfish-dockerfiles aws_aws-eb-glassfish-dockerfiles4.0-jdk7.,10,true,842,806,925,654,707,657,715,916,831,910,796.3,"100,719461873066","10144,41",web_component,20
 backdrop-ops_backdrop-docker,docker build -t backdrop-ops_backdrop-docker backdrop-ops_backdrop-docker1apache.,10,true,309,494,525,272,289,277,448,308,495,530,"394,7","106,29586069081","32344,41",application_platform,28
@@ -11,7 +11,7 @@ Bonitasoft-Community_docker_bonita,docker build -t Bonitasoft-Community_docker_b
 c0b_docker-elixir,docker build -t c0b_docker-elixir c0b_docker-elixir1.2.,10,true,1070,1467,983,793,859,790,896,1012,1086,1192,1014.8,"195,739009908603","38313,76",language,24
 carlossg_docker-maven,docker build -t carlossg_docker-maven carlossg_docker-mavenamazoncorretto-8.,10,true,185,587,594,447,482,451,457,569,577,587,493.6,"118,685466675579","14086,24",other,27
 composer_docker,docker build -t composer_docker composer_docker1.9.,10,true,373,384,493,288,303,292,322,463,357,358,363.3,"65,9151727601468","4344,81",other,64
-containous_traefik-library-image,docker build -t containous_traefik-library-image traefik-library-imagealpine.,10,true,106,116,120,74,74,76,78,82,86,82,89.4,"16,8059513268366","282,44",web_component,
+containous_traefik-library-image,docker build -t containous_traefik-library-image traefik-library-imagealpine.,10,true,106,116,120,74,74,76,78,82,86,82,89.4,"16,8059513268366","282,44",web_component,26
 convertigo_docker,docker build -t convertigo_docker convertigo_docker7.47.4.3.,10,false,59,69,81,57,57,58,57,60,59,61,61.8,"7,23602100605022","52,36",application_platform,121
 cpuguy83_docker-jruby,docker build -t cpuguy83_docker-jruby cpuguy83_docker-jruby9000jdk.,10,true,441,520,510,351,343,346,441,404,552,513,442.1,"75,2282526714532","5659,29",language,35
 crate_docker-crate,docker build -t crate_docker-crate crate_docker-crate.,10,true,908,927,798,639,608,605,782,880,1549,938,863.4,"259,842336812152","67518,04",database,84
@@ -31,8 +31,8 @@ docker-library_httpd,docker build -t docker-library_httpd docker-library_httpd2.
 docker-library_julia,docker build -t docker-library_julia docker-library_julia1.4buster,10,false,365,370,370,368,379,370,365,368,362,364,"368,1","4,50444225182208","20,29",language,73
 docker-library_mariadb,docker build -t docker-library_mariadb docker-library_mariadb10.3.,10,false,179,174,151,148,144,153,151,168,180,172,162.0,"13,1757352736005","173,6",database,132
 docker-library_memcached,docker build -t docker-library_memcached docker-library_memcacheddebian.,10,true,744,764,754,712,714,751,725,748,762,752,742.6,"17,9398996652713","321,84",database,80
-docker-library_mongo,docker build -t docker-library_mongo docker-library_mongo4.2.,10,false,172,177,205,157,152,156,157,170,180,177,170.3,"15,1132392292321","228,41",database,106
-docker-library_mysql,docker build -t docker-library_mysql docker-library_mysql5.7.,10,false,131,139,141,119,117,120,122,134,159,134,131.6,"12,2653984851696","150,44",database,82
+docker-library_mongo,docker build -t /repositories/docker-library_mongo/3.6,10,true,526,542,556,531,540,538,538,531,536,542,538,"7,78460018241143","60,6",database,106
+docker-library_mysql,docker build -t docker-library_mysql docker-library_mysql5.7.,10,true,248,235,225,224,231,223,224,223,224,223,228,"7,68114574786861",59,database,10
 docker-library_openjdk,docker build -t docker-library_openjdk docker-library_openjdk8jre.,10,false,196,204,265,173,172,174,174,191,215,197,196.1,"26,9905539031714","728,49",language,32
 docker-library_owncloud,docker build -t docker-library_owncloud docker-library_owncloud9.1apache.,10,false,432,742,695,402,402,454,626,431,727,747,565.8,"145,744845534928","21241,56",application_platform,85
 docker-library_php,docker build -t docker-library_php docker-library_php7.4alpine3.11cli.,10,false,103,116,141,89,89,95,103,96,102,101,103.5,"14,5619366843837","212,05",language,243
@@ -47,7 +47,7 @@ docker-library_ruby,docker build -t docker-library_ruby docker-library_ruby2.7al
 docker-library_tomcat,docker build -t docker-library_tomcat docker-library_tomcat9.0jdk8corretto.,10,true,822,922,603,442,413,457,419,1337,484,1199,709.8,"325,727739070531","106098,56",web_component,146
 docker-library_wordpress,docker build -t docker-library_wordpress docker-library_wordpressphp7.3apache.,10,true,673,1130,1130,632,631,697,694,693,752,814,784.6,"180,037884902039","32413,64",application_platform,111
 docker-solr_docker-solr,docker build -t docker-solr_docker-solr docker-solr_docker-solr8.1.,10,true,756,875,860,632,636,637,654,765,756,773,734.4,"86,6154720589803","7502,24",application_platform,140
-docker_distribution-library-image,docker build -t docker_distribution-library-image distribution-library-imageamd64.,10,true,22,36,34,23,23,23,24,23,22,24,25.4,"4,86209831245729","23,64",other,
+docker_distribution-library-image,docker build -t docker_distribution-library-image distribution-library-imageamd64.,10,true,22,36,34,23,23,23,24,23,22,24,25.4,"4,86209831245729","23,64",other,17
 docker_swarm-library-image,docker build -t docker_swarm-library-image docker_swarm-library-image.,10,true,18,20,27,19,19,19,17,16,19,19,19.3,"2,79463772249642","7,81",other,13
 dshearer_jobber-docker,docker build -t dshearer_jobber-docker dshearer_jobber-dockeralpine3.7.,10,true,273,306,271,241,233,238,234,270,267,269,260.2,"22,1033934046336","488,56",other,57
 eclipse_mosquitto,docker build -t eclipse_mosquitto eclipse_mosquittodocker1.6.,10,true,234,277,324,210,202,205,204,236,234,241,236.7,"36,4281484569282","1327,01",web_component,92
@@ -55,7 +55,7 @@ eggheads_eggdrop-docker,docker build -t eggheads_eggdrop-docker eggheads_eggdrop
 erlang_docker-erlang-otp,docker build -t erlang_docker-erlang-otp erlang_docker-erlang-otp23.,10,true,1163,1230,1872,1144,1160,1124,1144,1172,1147,1168,1232.4,"214,853531504604","46162,04",language,68
 ExpressGateway_express-gateway,docker build -t ExpressGateway_express-gateway ExpressGateway_express-gateway.,10,false,2,2,2,3,2,3,3,2,2,2,2.3,"0,458257569495584","0,21",other,21
 fluent_fluentd-docker-image,docker build -t fluent_fluentd-docker-image fluent_fluentd-docker-imagev1.10debian.,10,true,388,377,503,326,323,556,325,347,338,345,382.8,"77,0503731334249","5936,76",other,64
-friendica_docker,docker build -t friendica_docker friendica_docker2019.12apache.,10,false,92,1172,1575,1005,80,1511,88,119,92,1212,694.6,"619,422343801061","383684,04",application_platform,155
+friendica_docker,docker build -t friendica_docker friendica_docker2019.12apache.,10,true,769,756,763,778,835,766,769,770,773,779,825,"20,7499397589487","430,56",application_platform,128
 fsprojects_docker-fsharp,docker build -t fsprojects_docker-fsharp fsprojects_docker-fsharp10.7.0netcore.,10,true,799,1217,919,833,820,790,823,854,790,897,874.2,"121,465056703564","14753,76",language,41
 geonetwork_docker-geonetwork,docker build -t geonetwork_docker-geonetwork geonetwork_docker-geonetwork3.8.3.,10,true,873,1181,872,435,445,480,509,523,513,606,643.7,"235,465942335617","55444,21",application_platform,24
 groovy_docker-groovy,docker build -t groovy_docker-groovy groovy_docker-groovyjre8.,10,false,191,197,221,136,137,190,142,192,189,148,174.3,"28,8861558536265","834,41",language,83
@@ -70,7 +70,7 @@ influxdata_influxdata-docker,docker build -t influxdata_influxdata-docker influx
 jenkinsci_docker,docker build -t jenkinsci_docker jenkinsci_docker.,10,true,944,996,1094,799,766,767,847,917,904,1139,917.3,"123,238021730309","15187,61",application_platform,84
 jessfraz_irssi,docker build -t jessfraz_irssi jessfraz_irssidebian.,10,false,433,451,669,419,385,395,412,449,416,462,449.1,"76,940821414903","5919,89",web_component,93
 joomla_docker-joomla,docker build -t joomla_docker-joomla joomla_docker-joomlaphp7.4apache.,10,true,248,307,353,254,242,241,314,248,290,303,280.0,"36,7858668512786","1353,2",application_platform,85
-juanluisbaptiste_docker-brew-mageia,docker build -t juanluisbaptiste_docker-brew-mageia juanluisbaptiste_docker-brew-mageiadist6armv7hl.,10,true,1119,1300,1053,1114,1616,1078,961,981,919,953,"1109,4","199,116649228536","39647,44",linux_distro,10
+juanluisbaptiste_docker-brew-mageia,docker build -t juanluisbaptiste_docker-brew-mageia juanluisbaptiste_docker-brew-mageiadist6armv7hl.,10,true,1119,1300,1053,1114,1616,1078,961,981,919,953,"1109,4","199,116649228536","39647,44",linux_distro,17
 kaazing_gateway.docker,docker build -t kaazing_gateway.docker kaazing_gateway.docker.,10,false,17,16,20,16,17,17,16,15,15,16,16.5,"1,36014705087354","1,85",other,39
 keeganwitt_docker-gradle,docker build -t keeganwitt_docker-gradle keeganwitt_docker-gradlejdk8.,10,true,622,628,783,570,516,509,545,665,607,620,606.5,"76,3351164275001","5827,05",other,51
 Lightstreamer_Docker,docker build -t Lightstreamer_Docker Lightstreamer_Docker7.1jdk11.,10,true,1075,1084,1174,1094,1075,1076,1138,1108,1096,1260,1118,"56,1052582205982","3147,8",web_component,47
