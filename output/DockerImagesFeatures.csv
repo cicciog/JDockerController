@@ -8,10 +8,10 @@ ibmruntimes_ci.docker.json,1,0,1,1,0,0,0,1,0,0,0,1,1,0,0,0,6
 orientechnologies_orientdb-docker.json,1,0,5,2,1,0,0,1,1,0,2,1,1,0,0,0,15
 docker_swarm-library-image.json,1,0,1,0,1,3,1,1,0,0,1,0,0,0,0,0,9
 appropriate_docker-jetty.json,1,0,7,1,0,1,1,1,1,1,1,0,0,0,0,0,15
-docker-library_openjdk.json,1,0,6,3,0,0,0,0,0,0,0,0,0,0,0,0,10
+docker-library_openjdk.json,1,0,5,1,0,0,0,1,0,0,0,0,0,0,0,0,8
 hashicorp_docker-vault.json,1,0,0,3,2,1,1,1,0,0,1,0,1,0,0,0,11
 convertigo_docker.json,1,0,9,6,1,2,1,1,2,0,1,1,0,0,0,0,25
-docker-library_rails.json,1,0,1,3,0,0,0,0,0,0,0,0,0,0,0,0,5
+docker-library_rails.json,1,0,1,5,0,3,0,1,0,0,1,0,0,0,0,0,12
 geonetwork_docker-geonetwork.json,1,0,5,1,0,1,1,1,1,0,0,0,0,0,0,0,11
 haskell_docker-haskell.json,1,0,1,3,0,0,0,1,0,0,0,0,3,0,0,0,9
 nextcloud_docker.json,1,0,1,5,1,2,1,1,0,0,0,0,0,0,0,0,12
@@ -59,7 +59,7 @@ fsprojects_docker-fsharp.json,1,1,2,3,0,0,0,1,1,0,0,0,0,0,0,0,9
 SonarSource_docker-sonarqube.json,2,0,2,2,0,2,1,1,1,0,1,0,4,0,0,0,16
 docker-library_django.json,1,0,1,2,0,0,0,0,0,0,0,0,0,0,0,0,4
 docker-library_rabbitmq.json,1,0,12,5,1,1,1,1,0,0,1,0,1,0,0,0,24
-docker-library_redis.json,1,0,4,4,1,1,1,1,1,0,1,0,0,0,0,0,15
+docker-library_redis.json,1,0,3,4,1,1,1,1,1,0,1,0,0,0,0,0,14
 docker-library_busybox.json,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,3
 docker-library_redmine.json,1,0,4,6,1,1,1,1,1,0,1,0,0,0,0,0,17
 docker-library_mariadb.json,1,0,4,9,1,1,1,1,0,0,1,0,0,0,0,0,19
@@ -82,7 +82,7 @@ aws_aws-eb-glassfish-dockerfiles.json,1,0,3,2,0,0,0,1,1,0,1,0,0,0,0,0,9
 docker-library_ruby.json,1,0,6,4,0,0,0,1,0,0,0,0,0,0,0,0,12
 containous_traefik-library-image.json,1,1,0,2,0,1,1,1,0,0,1,0,0,0,0,0,8
 tianon_docker-bash.json,1,0,4,1,0,1,1,1,0,0,0,0,0,0,0,0,9
-docker-library_php.json,1,0,9,6,0,2,1,1,0,0,0,0,0,0,0,0,20
+docker-library_php.json,1,0,0,2,0,2,0,1,0,0,1,0,0,0,0,0,7
 matomo-org_docker.json,1,1,1,3,1,2,1,1,0,0,0,0,0,0,0,0,11
 docker-library_cassandra.json,1,0,7,5,1,1,1,1,0,0,1,0,0,0,0,0,18
 Bonitasoft-Community_docker_bonita.json,1,0,6,7,1,2,0,1,0,0,1,1,0,0,0,0,20
