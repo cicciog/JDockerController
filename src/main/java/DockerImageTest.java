@@ -14,15 +14,24 @@ public class DockerImageTest {
     public static void main(String[] args) throws IOException, InterruptedException {
         DockerController dockercontroller = new DockerController();
 
-        //Jetty
+        //haskell
         for (int i = 0; i < 10; i++) {
             dockercontroller.removeAllImages();
             int start1 = dockercontroller.getStartTime();
-            dockercontroller.buildDockerImage("mongo","/home/francesco/Documenti/repositories/docker-library_mongo/3.6/.");
+            dockercontroller.buildDockerImage("haskell","/home/francesco/Documenti/repositories/haskell_docker-haskell/7.8");
             int end1 = dockercontroller.getFinalTime();
-            System.out.println("Esecuzione mongo" + (i + 1) + " " + (end1 - start1) + " secondi\n\n");
+            System.out.println("Esecuzione haskell" + (i + 1) + " " + (end1 - start1) + " secondi\n\n");
         }
         
+        
+       //bash devel
+        for (int i = 0; i < 10; i++) {
+            dockercontroller.removeAllImages();
+            int start1 = dockercontroller.getStartTime();
+            dockercontroller.buildDockerImage("bash","/home/francesco/Documenti/repositories/tianon_docker-bash/devel");
+            int end1 = dockercontroller.getFinalTime();
+            System.out.println("Esecuzione bash " + (i + 1) + " " + (end1 - start1) + " secondi\n\n");
+        }         
       
     }
 
